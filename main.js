@@ -27,11 +27,17 @@ listeTachesTerminer.style.display = "none"
 listeTachesTout.style.display = "none"
 
 btnAjouter.addEventListener("click", ()=>{
+    
         let newTache = document.createElement("li")
         newTache.className = "tache nonTerminer"
+
+        let divCheckText = document.createElement("div")
+        newTache.appendChild(divCheckText)
+        divCheckText.className = "divCheckText"
+        
         let texteTache = document.createElement("span")
         texteTache.innerText = inputAjouter.value
-        newTache.appendChild(texteTache)
+        divCheckText.appendChild(texteTache)
         inputAjouter.value = ""
         liste.appendChild(newTache)
         
@@ -39,7 +45,12 @@ btnAjouter.addEventListener("click", ()=>{
         let newCheckBox = document.createElement("input")
         newCheckBox.setAttribute("type", "checkbox")
         newCheckBox.className = "checkBox"
-        newTache.prepend(newCheckBox)
+        divCheckText.prepend(newCheckBox)
+
+
+        let divBtnTache = document.createElement("div")
+        newTache.appendChild(divBtnTache)
+        divBtnTache.className = "divButtonTache"
         
         let newModif = document.createElement("button")
         newModif.innerText = "Modifier"
@@ -51,9 +62,9 @@ btnAjouter.addEventListener("click", ()=>{
         newInput.placeholder = "Modification"
         newInput.style.display = "none"
 
-        newTache.appendChild(newInput)
-        newTache.appendChild(newModif)
-        newTache.appendChild(newSupp)
+        divBtnTache.appendChild(newInput)
+        divBtnTache.appendChild(newModif)
+        divBtnTache.appendChild(newSupp)
         tachesTotal.innerText = tacheCount += 1
 
 
