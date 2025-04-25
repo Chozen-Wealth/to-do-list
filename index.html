@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script defer src="./main.js"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <header>
@@ -13,35 +14,34 @@
     </header>
     <main>
         <div id="listeTachesNonTerminer">
-            <div id="divPrincipale">
+            <div>
                 <h2>To Do List</h2>
-                <h2><span id="tachesFinis">0</span>/<span id="tachesTotal">0</span></h2>
-                <ul>
-                </ul>
+                <h2>Terminés : <span id="tachesFinis">0</span>/<span id="tachesTotal">0</span> Total</h2>
             </div>
+            <ul>
+                <li class="tache nonTerminer"><input type="checkbox" class="checkBox"><span>Courir</span><input placeholder="Modification" style="display: none;"><button>Modifier</button><button>Supprimer</button></li>
+            </ul>
             <div>
                 <input type="text" id="inputAjouter">
                 <button id="btnAjouter" type="submit">Ajouter</button>
             </div>
         </div>
-        <div class="listeTachesTerminer">
+        <div id="listeTachesTerminer">
             <h2>To Do List</h2>
             <h2>Taches terminées : <span id="tachesFinis2">0</span></h2>
             <ul>
             </ul>
         </div>
-        <div class="listeTachesTout">
+        <div id="listeTachesTout">
             <ul>
                 
             </ul>
         </div>
     </main>
     <footer>
-        <ul>
-            <li><button id="btnTout">Tout</button></li>
-            <li><button id="btnNonTerminer">Non terminés</button></li>
-            <li><button id="btnTerminer">Terminés</button></li>
-        </ul>
+        <button id="btnTout">Tout</button>
+        <button id="btnNonTerminer">Non terminés</button>
+        <button id="btnTerminer">Terminés</button>
     </footer>
 </body>
 </html>

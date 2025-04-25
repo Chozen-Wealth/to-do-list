@@ -22,6 +22,7 @@ let listeTout = document.getElementsByTagName("ul")[2]
 
 let tacheCount = liste.children.length
 tachesFinis.innerText = 0
+
 listeTachesTerminer.style.display = "none"
 listeTachesTout.style.display = "none"
 
@@ -91,9 +92,14 @@ btnAjouter.addEventListener("click", ()=>{
                 tachesFinis.innerText = tachesFinisCount
                 newTache.classList.remove("nonTerminer")
                 newTache.classList.add("Terminer")
-                listeFini.appendChild(newTache)
-                newCheckBox.style.pointerEvents = "none"
-                newModif.style.display = "none"
+                tachesFinis2.innerText = tachesFinisCount
+            }
+            else if (!newCheckBox.checked) {
+                let tachesFinisCount = parseInt(tachesFinis.innerText)
+                tachesFinisCount -= 1
+                tachesFinis.innerText = tachesFinisCount
+                newTache.classList.remove("Terminer")
+                newTache.classList.add("nonTerminer")
                 tachesFinis2.innerText = tachesFinisCount
             }
         })
@@ -106,35 +112,11 @@ inputAjouter.addEventListener("keypress", (e)=>{
 })
 
 btnTout.addEventListener("click", ()=>{
-    Array.from(liste.children).forEach(element => {
-        listeTout.appendChild(element)
-    });
-    Array.from(listeFini.children).forEach(element => {
-        listeTout.appendChild(element)
-    })
-    listeTachesTout.style.display = "block"
-    listeTachesNonTerminer.style.display = "none"
-    listeTachesTerminer.style.display = "none"
+    
 })
 btnNonTerminer.addEventListener("click", ()=>{
-    Array.from(listeTout.children).forEach(element => {
-        liste.appendChild(element)
-    })
-    Array.from(listeFini.children).forEach(element => {
-        liste.appendChild(element)
-    })
-    listeTachesNonTerminer.style.display = "block"
-    listeTachesTerminer.style.display = "none"
-    listeTachesTout.style.display = "none"
+    
 })
 btnTerminer.addEventListener("click", ()=>{
-    Array.from(liste.children).forEach(element => {
-        listeFini.appendChild(element)
-    })
-    Array.from(listeTout.children).forEach(element => {
-        listeFini.appendChild(element)
-    })
-    listeTachesNonTerminer.style.display = "block"
-    listeTachesTerminer.style.display = "none"
-    listeTachesTout.style.display = "none"
+    
 })
