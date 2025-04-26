@@ -5,12 +5,13 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url(https://img.stablecog.com/insecure/1920w/aHR0cHM6Ly9iLnN0YWJsZWNvZy5jb20vNzcxMTNiOWYtZmVhYi00OTU4LWJlZjItYzQ1YjE3ZTcxYWRkLmpwZWc.webp);
+    background-image: linear-gradient(black, transparent),url(https://img.stablecog.com/insecure/1920w/aHR0cHM6Ly9iLnN0YWJsZWNvZy5jb20vNzcxMTNiOWYtZmVhYi00OTU4LWJlZjItYzQ1YjE3ZTcxYWRkLmpwZWc.webp);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     color: white;
     height: 100vh;
+    overflow-y: hidden;
 }
 
 header {
@@ -18,7 +19,7 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 200px;
+    height: 20%;
     font-size: 1.5rem;
 }
 
@@ -26,7 +27,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 400px);
+    height: 70%;
 }
 
 #listeTachesNonTerminer {
@@ -62,12 +63,28 @@ main {
     padding: 5px;
     border-radius: 10px;
 }
-#listeTachesNonTerminer ul li input[type="checkbox"]{
+.checkBox{
     margin-left: 10px;
     height: 20px;
     width: 20px;
-    border-radius: 10px;
+    appearance: none;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
 }
+.checkBox:checked{
+    background-color: #3d3d3d;
+}
+.checkBox:checked::after {
+    content: "✔";
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    left: 4px;
+    bottom: 1px;
+}
+
 .divButtonTache {
     display: flex;
     gap: 5px;
@@ -82,13 +99,18 @@ main {
     border: none;
     border-radius: 5px;
     padding: 5px 15px;
+    cursor: pointer;
+}
+#listeTachesNonTerminer button:hover{
+    background-color: #3d3d3d;
+    color: white;
 }
 
 footer {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    height: 200px;
+    height: 10%;
     gap: 20px;
 }
 

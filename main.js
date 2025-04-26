@@ -13,18 +13,15 @@ let tachesTotal = document.getElementById("tachesTotal")
 let liste = document.getElementsByTagName("ul")[0]
 let tache = document.getElementsByClassName("tache")[0]
 
-let listeTachesTerminer = document.getElementById("listeTachesTerminer")
 let listeTachesNonTerminer = document.getElementById("listeTachesNonTerminer")
-let listeTachesTout = document.getElementById("listeTachesTout")
-
-let listeFini = document.getElementsByTagName("ul")[1]
-let listeTout = document.getElementsByTagName("ul")[2]
 
 let tacheCount = liste.children.length
 tachesFinis.innerText = 0
 
 listeTachesTerminer.style.display = "none"
 listeTachesTout.style.display = "none"
+
+let modeAffichage = "nonTerminer"
 
 btnAjouter.addEventListener("click", ()=>{
     
@@ -55,11 +52,12 @@ btnAjouter.addEventListener("click", ()=>{
         let newModif = document.createElement("button")
         newModif.innerText = "Modifier"
         
+        
         let newSupp = document.createElement("button")
         newSupp.innerText = "Supprimer"
         
         let newInput = document.createElement("input")
-        newInput.placeholder = "Modification"
+        newInput.placeholder = " Modification"
         newInput.style.display = "none"
 
         divBtnTache.appendChild(newInput)
@@ -81,21 +79,37 @@ btnAjouter.addEventListener("click", ()=>{
                 taches2FinisCount -= 1
                 tachesFinis2.innerText = taches2FinisCount
             }
+            let listeVide = document.getElementById("listeVide")
+            if (liste.children.length === 0) {
+                listeVide.style.display = "flex"
+            }
+            else if (liste.children.length >= 1) {
+                listeVide.style.display = "none"
+            }
         })
         newModif.addEventListener("click", ()=> {
             newInput.style.display = "inline"
-            if (newInput.value) {
-                texteTache.innerText = newInput.value
-                newInput.style.display = "none"
-            }
-            
+            newInput.focus()
         })
+
         newInput.addEventListener("keypress", (e)=>{
             if (e.key === "Enter"){
                 e.preventDefault()
-                newModif.click()
+                if (newInput.value.trim() !== "") {
+                    texteTache.innerText = newInput.value
+                    newInput.value = ""
+                }
+                newInput.style.display = "none"
             }
         })
+        newInput.addEventListener("keydown", (e)=>{
+            if (e.key === "Escape"){
+                newInput.value = ""
+                newInput.style.display = "none"
+            }
+        })
+
+
         newCheckBox.addEventListener("change", ()=> {
             if (newCheckBox.checked) {
                 let tachesFinisCount = parseInt(tachesFinis.innerText)
@@ -112,6 +126,17 @@ btnAjouter.addEventListener("click", ()=>{
                 newTache.classList.remove("Terminer")
                 newTache.classList.add("nonTerminer")
                 tachesFinis2.innerText = tachesFinisCount
+                newTache.style.display = "flex"
+            }
+
+            if (modeAffichage === "Tout") {
+                newTache.style.display = "flex";
+            } else if (modeAffichage === "Terminer" && newCheckBox.checked) {
+                newTache.style.display = "flex";
+            } else if (modeAffichage === "NonTerminer" && !newCheckBox.checked) {
+                newTache.style.display = "flex";
+            } else {
+                newTache.style.display = "none";
             }
         })
 })
@@ -120,14 +145,42 @@ inputAjouter.addEventListener("keypress", (e)=>{
         e.preventDefault()
         btnAjouter.click()
     }
+    let listeVide = document.getElementById("listeVide")
+    if (liste.children.length === 0) {
+        listeVide.style.display = "flex"
+    }
+    else if (liste.children.length >= 1) {
+        listeVide.style.display = "none"
+    }
 })
 
 btnTout.addEventListener("click", ()=>{
-    
+    modeAffichage = "Tout"
+    Array.from(liste.children).forEach(li => {
+        li.style.display = "flex"
+    })
 })
 btnNonTerminer.addEventListener("click", ()=>{
-    
+    modeAffichage = "NonTerminer"
+    Array.from(liste.children).forEach(li => {
+        if (li.classList.contains("nonTerminer")) {
+            li.style.display = "flex";
+        }
+        else {
+            li.style.display = "none";
+        }
+    });
 })
 btnTerminer.addEventListener("click", ()=>{
-    
+    modeAffichage = "Terminer"
+    Array.from(liste.children).forEach(li => {
+        if (li.classList.contains("Terminer")) {
+            li.style.display = "flex"
+        }
+        else {
+            li.style.display = "none"
+        }
+    })
+
 })
+
