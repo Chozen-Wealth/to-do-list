@@ -146,6 +146,7 @@ btnAjouter.addEventListener("click", ()=>{
     else if (liste.children.length >= 1) {
         listeVide.style.display = "none"
     }
+})
 inputAjouter.addEventListener("keypress", (e)=>{
     if (e.key === "Enter"){
         e.preventDefault()
