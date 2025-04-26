@@ -24,14 +24,6 @@ listeTachesTout.style.display = "none"
 let modeAffichage = "nonTerminer"
 
 btnAjouter.addEventListener("click", ()=>{
-
-        let listeVide = document.getElementById("listeVide")
-    if (liste.children.length === 0) {
-        listeVide.style.display = "flex"
-    }
-    else if (liste.children.length >= 1) {
-        listeVide.style.display = "none"
-    }
     
         let newTache = document.createElement("li")
         newTache.className = "tache nonTerminer"
@@ -147,7 +139,13 @@ btnAjouter.addEventListener("click", ()=>{
                 newTache.style.display = "none";
             }
         })
-})
+            let listeVide = document.getElementById("listeVide")
+    if (liste.children.length === 0) {
+        listeVide.style.display = "flex"
+    }
+    else if (liste.children.length >= 1) {
+        listeVide.style.display = "none"
+    }
 inputAjouter.addEventListener("keypress", (e)=>{
     if (e.key === "Enter"){
         e.preventDefault()
