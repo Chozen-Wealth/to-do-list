@@ -13,17 +13,22 @@
         <h3>Awaken your productivity</h3>
     </header>
     <main>
+        <div>
+            <button id="btnTout">Tout</button>
+            <button id="btnNonTerminer">Non terminés</button>
+            <button id="btnTerminer">Terminés</button>
+        </div>
         <div id="listeTachesNonTerminer">
             <div>
                 <h2>To Do List</h2>
                 <h2>Terminés : <span id="tachesFinis">0</span>/<span id="tachesTotal">0</span> Total</h2>
             </div>
-            <p id="listeVide">------ Liste Vide. -----</p>
-            <ul>
+            <p id="listeVide">Liste Vide.</p>
+            <ul style="display: none;">
             </ul>
             <div>
                 <input type="text" id="inputAjouter" autocomplete="off">
-                <button id="btnAjouter" type="submit">Ajouter</button>
+                <button id="btnAjouter" type="submit"><span id="textBtn">Ajouter</span><svg id="svgBtn" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></button>
             </div>
         </div>
         <div id="listeTachesTerminer">
@@ -38,10 +43,5 @@
             </ul>
         </div>
     </main>
-    <footer>
-        <button id="btnTout">Tout</button>
-        <button id="btnNonTerminer">Non terminés</button>
-        <button id="btnTerminer">Terminés</button>
-    </footer>
 </body>
 </html>
