@@ -59,14 +59,19 @@ btnAjouter.addEventListener("click", ()=>{
         newModif.appendChild(newModifSvg)
         
         let newSupp = document.createElement("button")
-        newSupp.innerText = "Supprimer"
+        newSupp.className = "btnsTache"
+        let newSuppText = document.createElement("span")
+        newSuppText.innerText = "Supprimer"
+        let newSuppSvg = document.createElement("svg")
+        newSuppSvg.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>'
+        newSupp.appendChild(newSuppText)
+        newSupp.appendChild(newSuppSvg)
         
         let newInput = document.createElement("input")
-        newInput.placeholder = " Modification"
         newInput.style = "border-radius: 5px; border: none;"
         newInput.style.display = "none"
 
-        divBtnTache.appendChild(newInput)
+        divCheckText.appendChild(newInput)
         divBtnTache.appendChild(newModif)
         divBtnTache.appendChild(newSupp)
         tachesTotal.innerText = tacheCount += 1
@@ -96,14 +101,25 @@ btnAjouter.addEventListener("click", ()=>{
             }
         })
         newModif.addEventListener("click", ()=> {
-            newInput.style.display = "inline"
-            newInput.focus()
+            if (newInput.style.display == "inline") {
+                    texteTache.style.display = "block"
+                    texteTache.innerText = newInput.value
+                    newInput.value = ""
+                    newInput.style.display = "none"
+            }
+            else {
+                newInput.style.display = "inline"
+                newInput.focus()
+                newInput.value = texteTache.innerText
+                texteTache.style.display = "none"
+            }
         })
 
         newInput.addEventListener("keypress", (e)=>{
             if (e.key === "Enter"){
                 e.preventDefault()
                 if (newInput.value.trim() !== "") {
+                    texteTache.style.display = "block"
                     texteTache.innerText = newInput.value
                     newInput.value = ""
                 }
@@ -114,6 +130,7 @@ btnAjouter.addEventListener("click", ()=>{
             if (e.key === "Escape"){
                 newInput.value = ""
                 newInput.style.display = "none"
+                texteTache.style.display = "block"
             }
         })
 

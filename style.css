@@ -11,7 +11,6 @@ body {
     background-repeat: no-repeat;
     color: white;
     height: 100vh;
-    overflow-y: hidden;
 }
 
 header {
@@ -206,6 +205,9 @@ main > div > button:hover{
     .btnsTache > svg {
         display: inline;
         margin-bottom: 5px;
+    }
+    .btnsTache:nth-of-type(2) > svg {
+        margin-right: 5px;
     }
     .btnsTache > span {
         display: none;
